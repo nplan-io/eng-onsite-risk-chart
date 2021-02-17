@@ -20,9 +20,9 @@ Apollo client has been set up and pointed at the correct API.
 - ### Containers/RiskChart
   Renders the chart described in the exercise document.
   Props you should care about:
-- `data`: `[{date: String, risk: Number}]` — this should already work with the data you receive from the API
+- `data`: `[{date: String, risk: Number, taskCount: Number}]` — this should already work with the data you receive from the API
 - `highlightAreas`: `[{start: String, end: String}]` — an array of objects defining the edges of areas to highlight on the chart, as date strings parseable by `new Date`
-- `onAreaSelect`: `function` — callback for when the user selects an area of the chart. This will be called with a `{start: String, end: String}` object as above.
+- `onAreaSelect`: `function` — callback for when the user selects an area of the chart. This will be called with a `{start: String, end: String}` object as above. The chart component is unopinionated about the minimum or maximum size of a highlight.
 
 ---
 
