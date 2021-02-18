@@ -39,7 +39,7 @@ const Chart = ({
   margin = { top: 0, right: 0, bottom: 45, left: 0 },
   data,
   highlightAreas = [],
-  onAreaSelect,
+  onAreaSelect = () => {},
   showTooltip,
   hideTooltip,
   tooltipData,
@@ -74,10 +74,6 @@ const Chart = ({
   });
   const [highlights, setHighlights] = useState([...highlightAreas]);
   const [clicking, setClicking] = useState(false);
-
-  useEffect(() => {
-    setHighlights([...highlightAreas]);
-  }, [highlightAreas]);
 
   const handleTooltip = useCallback(
     e => {
