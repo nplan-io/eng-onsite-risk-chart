@@ -8,7 +8,7 @@ import {
   withTooltip,
   Tooltip,
   TooltipWithBounds,
-  defaultStyles
+  defaultStyles,
 } from "@visx/tooltip";
 import { localPoint } from "@visx/event";
 import { AxisBottom } from "@visx/axis";
@@ -22,7 +22,7 @@ const tooltipStyles = {
   background,
   border: "1px solid white",
   color: "white",
-  fontFamily: "Tahoma"
+  fontFamily: "Tahoma",
 };
 
 const formatDate = timeFormat("%b %d, '%y");
@@ -44,7 +44,7 @@ const Chart = ({
   hideTooltip,
   tooltipData,
   tooltipTop = 0,
-  tooltipLeft = 0
+  tooltipLeft = 0,
 }) => {
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
@@ -53,7 +53,7 @@ const Chart = ({
     () =>
       scaleTime({
         range: [margin.left, innerWidth + margin.left],
-        domain: extent(data, getDate)
+        domain: extent(data, getDate),
       }),
     [data, innerWidth, margin.left]
   );
@@ -63,17 +63,21 @@ const Chart = ({
       scaleLinear({
         range: [innerHeight + margin.top, margin.top],
         domain: [0, max(data, getRisk) * 2],
-        nice: true
+        nice: true,
       }),
     [data, margin.top, innerHeight]
   );
 
   const [selectHighlight, setSelectHighlight] = useState({
     start: false,
-    end: false
+    end: false,
   });
   const [highlights, setHighlights] = useState([...highlightAreas]);
   const [clicking, setClicking] = useState(false);
+
+  useEffect(() => {
+    setHighlights([...highlights, ...highlightAreas]);
+  }, [highlightAreas]);
 
   const handleTooltip = useCallback(
     e => {
@@ -84,7 +88,7 @@ const Chart = ({
         showTooltip({
           tooltipData: data[index],
           tooltipLeft: x,
-          tooltipTop: riskScale(getRisk(data[index]))
+          tooltipTop: riskScale(getRisk(data[index])),
         });
       }
     },
@@ -114,7 +118,7 @@ const Chart = ({
         new Date(selectHighlight.start) < new Date(selectHighlight.end);
       const hlt = {
         start: ltr ? selectHighlight.start : selectHighlight.end,
-        end: ltr ? selectHighlight.end : selectHighlight.start
+        end: ltr ? selectHighlight.end : selectHighlight.start,
       };
       setHighlights([...highlights, hlt]);
       onAreaSelect(selectHighlight);
@@ -138,7 +142,7 @@ const Chart = ({
           fontSize: "12px",
           borderRadius: "8px",
           color: "#5d5d5d",
-          cursor: "pointer"
+          cursor: "pointer",
         }}
         onClick={clearHighlights}
       >
@@ -303,7 +307,7 @@ const Chart = ({
               textAlign: "center",
               transform: "translateX(-55%)",
               fontFamily: "Tahoma",
-              fontSize: "12px"
+              fontSize: "12px",
             }}
           >
             {formatDate(getDate(tooltipData))}
