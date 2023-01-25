@@ -7,8 +7,9 @@ import { ApolloProvider } from "@apollo/client";
 import "./index.css";
 
 const client = new ApolloClient({
-  uri: "https://fakerql.nplan.io/graphql",
-  cache: new InMemoryCache()
+  // uri: "https://fakerql.nplan.io/graphql",
+  uri: "http://localhost:4000/graphql",
+  cache: new InMemoryCache(),
 });
 
 ReactDOM.render(

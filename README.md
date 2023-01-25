@@ -2,12 +2,14 @@
 
 This application was scaffolded using `create-react-app`, with node version `14.15.1`
 
-### Running
+## Running
 
 - `npm i`
 - `npm start`
 
 should get you going.
+
+This app expects a server running locally on port 4000. See separate instructions for how to run the server.
 
 ## Bits provided
 
@@ -26,6 +28,6 @@ Apollo client has been set up and pointed at the correct API.
 
 ---
 
-If you'd like to introspect the query and mutation a little more, there should be docs available at https://fakerql.nplan.io/.
+If you'd like to introspect the query and mutation a little more, there should be docs available at localhost:4000/graphql.
 
 How you structure the rest of the application and the flow of data is up to you. Good luck! :)

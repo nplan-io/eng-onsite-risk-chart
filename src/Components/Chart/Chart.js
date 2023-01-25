@@ -76,7 +76,9 @@ const Chart = ({
   const [clicking, setClicking] = useState(false);
 
   useEffect(() => {
-    setHighlights([...highlights, ...highlightAreas]);
+    if (highlightAreas.length) {
+      setHighlights(highlights => [...highlights, ...highlightAreas]);
+    }
   }, [highlightAreas]);
 
   const handleTooltip = useCallback(
